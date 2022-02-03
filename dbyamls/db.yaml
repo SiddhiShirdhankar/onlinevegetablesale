@@ -1,0 +1,41 @@
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "sidapplication"
+  namespace: "default"
+  labels:
+    app: "sidapplication"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "sidapplication"
+  template:
+    metadata:
+      labels:
+        app: "sidapplication"
+    spec:
+      containers:
+      - name: "onlinevegetablesale-sha256-1"
+        image: "gcr.io/cap1-339903/github.com/siddhishirdhankar/onlinevegetablesale@sha256:1a268cbaefcd2f2d38aecf7efe3fa1516b8a4e6cb0ccadf169962b3cc85f13d9"
+---
+apiVersion: "autoscaling/v2beta1"
+kind: "HorizontalPodAutoscaler"
+metadata:
+  name: "sidapplication-hpa-dd5z"
+  namespace: "default"
+  labels:
+    app: "sidapplication"
+spec:
+  scaleTargetRef:
+    kind: "Deployment"
+    name: "sidapplication"
+    apiVersion: "apps/v1"
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: "Resource"
+    resource:
+      name: "cpu"
+      targetAverageUtilization: 80
