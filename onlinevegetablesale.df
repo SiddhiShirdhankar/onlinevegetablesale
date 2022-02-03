@@ -1,0 +1,3 @@
+FROM postgres
+ENV POSTGRES_DB=onlinevegetablesale
+ENV POSGRES_PASSWORD=1234
