@@ -18,12 +18,12 @@ spec:
     spec:
       containers:
       - name: "onlinevegetablesale-sha256-1"
-        image: "gcr.io/cap1-339903/github.com/siddhishirdhankar/onlinevegetablesale@sha256:ece8c69bfad365d1e5933ed49aeeb0320e0ff85c3c439a240594da66b6ee5b50"
+        image: "gcr.io/cap1-339903/github.com/siddhishirdhankar/onlinevegetablesale@sha256:43626753cc3e4d488c9c40582ad7117f80a892e1abe8291e9c8e7b0ae560f14a"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "onlinevegetablesale-hpa-crom"
+  name: "onlinevegetablesale-hpa-x4og"
   namespace: "default"
   labels:
     app: "onlinevegetablesale"
