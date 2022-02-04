@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "nginx-siddhi2"
+  name: "nginx-siddhi"
   namespace: "default"
   labels:
-    app: "nginx-siddhi2"
+    app: "nginx-siddhi"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "nginx-siddhi2"
+      app: "nginx-siddhi"
   template:
     metadata:
       labels:
-        app: "nginx-siddhi2"
+        app: "nginx-siddhi"
     spec:
       containers:
       - name: "onlinevegetablesale-sha256-1"
-        image: "gcr.io/cap1-339903/github.com/siddhishirdhankar/onlinevegetablesale@sha256:c26e38928d7dafb68a57206f5e1a3838f97182425167f491fcdf75ce15b67c8c"
+        image: "gcr.io/cap1-339903/github.com/siddhishirdhankar/onlinevegetablesale@sha256:ece8c69bfad365d1e5933ed49aeeb0320e0ff85c3c439a240594da66b6ee5b50"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "nginx-siddhi2-hpa-nsol"
+  name: "nginx-siddhi-hpa-lfja"
   namespace: "default"
   labels:
-    app: "nginx-siddhi2"
+    app: "nginx-siddhi"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "nginx-siddhi2"
+    name: "nginx-siddhi"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 5
