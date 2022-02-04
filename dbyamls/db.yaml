@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "onlinevegetablesale"
+  name: "ovsapp"
   namespace: "default"
   labels:
-    app: "onlinevegetablesale"
+    app: "ovsapp"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "onlinevegetablesale"
+      app: "ovsapp"
   template:
     metadata:
       labels:
-        app: "onlinevegetablesale"
+        app: "ovsapp"
     spec:
       containers:
       - name: "onlinevegetablesale-sha256-1"
-        image: "gcr.io/cap1-339903/github.com/siddhishirdhankar/onlinevegetablesale@sha256:43626753cc3e4d488c9c40582ad7117f80a892e1abe8291e9c8e7b0ae560f14a"
+        image: "gcr.io/cap1-339903/github.com/siddhishirdhankar/onlinevegetablesale@sha256:1ca3500d897d77e217a7b36195d580a98fbf6040d2b87f002c74ba941d3ca2ed"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "onlinevegetablesale-hpa-x4og"
+  name: "ovsapp-hpa-lktw"
   namespace: "default"
   labels:
-    app: "onlinevegetablesale"
+    app: "ovsapp"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "onlinevegetablesale"
+    name: "ovsapp"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 5
