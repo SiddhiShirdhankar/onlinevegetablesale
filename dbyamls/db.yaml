@@ -2,41 +2,40 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "nginx-siddhi1"
+  name: "nginx-siddhi2"
   namespace: "default"
   labels:
-    app: "nginx-siddhi1"
+    app: "nginx-siddhi2"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "nginx-siddhi1"
+      app: "nginx-siddhi2"
   template:
     metadata:
       labels:
-        app: "nginx-siddhi1"
+        app: "nginx-siddhi2"
     spec:
       containers:
       - name: "onlinevegetablesale-sha256-1"
-        image: "gcr.io/cap1-339903/github.com/siddhishirdhankar/onlinevegetablesale@sha256:fd87cc9fe7d2f6ccf9bc9dffe0218c7fcbbf07be9ba18c0f4fb08e6a7b05a16f"
+        image: "gcr.io/cap1-339903/github.com/siddhishirdhankar/onlinevegetablesale@sha256:c26e38928d7dafb68a57206f5e1a3838f97182425167f491fcdf75ce15b67c8c"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "nginx-siddhi1-hpa-npmw"
+  name: "nginx-siddhi2-hpa-nsol"
   namespace: "default"
   labels:
-    app: "nginx-siddhi1"
+    app: "nginx-siddhi2"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "nginx-siddhi1"
+    name: "nginx-siddhi2"
     apiVersion: "apps/v1"
   minReplicas: 1
-  maxReplicas: 1
+  maxReplicas: 5
   metrics:
   - type: "Resource"
     resource:
       name: "cpu"
       targetAverageUtilization: 80
-
