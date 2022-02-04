@@ -2,19 +2,19 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "nginx-siddhi"
+  name: "onlinevegetablesale"
   namespace: "default"
   labels:
-    app: "nginx-siddhi"
+    app: "onlinevegetablesale"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "nginx-siddhi"
+      app: "onlinevegetablesale"
   template:
     metadata:
       labels:
-        app: "nginx-siddhi"
+        app: "onlinevegetablesale"
     spec:
       containers:
       - name: "onlinevegetablesale-sha256-1"
@@ -23,14 +23,14 @@ spec:
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "nginx-siddhi-hpa-lfja"
+  name: "onlinevegetablesale-hpa-crom"
   namespace: "default"
   labels:
-    app: "nginx-siddhi"
+    app: "onlinevegetablesale"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "nginx-siddhi"
+    name: "onlinevegetablesale"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 5
